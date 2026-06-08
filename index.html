@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Yeski Pizza | Artisan Pizza • Obuasi</title>
   <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,700&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -28,6 +28,7 @@
       --gray: #e0e0e0;
       --text-dark: #1a1a1a;
       --text-muted: #666666;
+      --gold: #d4af37;
     }
 
     /* ===== HAMBURGER MENU STYLES ===== */
@@ -173,125 +174,87 @@
       padding: 0 2rem;
     }
 
-    /* HOME SECTION */
+    /* ===== HOME SECTION WITH VIDEO BACKGROUND ===== */
     .home-section {
       position: relative;
-      padding: 5rem 0;
-      background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.65)), url('https://placehold.co/1920x1080/2a2a2a/c41e3a?text=Yeski+Pizza+%7C+Replace+with+your+image') center/cover no-repeat;
-      background-blend-mode: overlay;
+      width: 100%;
+      min-height: 100vh;
       overflow: hidden;
     }
 
-    .home-content {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 3rem;
+    /* Video Background */
+    .hero-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+    }
+
+    /* Overlay for better text contrast */
+    .home-section::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* Centered Branding - YESKI PIZZA with cool font style */
+    .hero-branding {
       position: relative;
       z-index: 2;
-    }
-
-    .home-text {
-      flex: 1;
-      min-width: 280px;
-      color: white;
-    }
-
-    .home-text h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 3.8rem;
-      font-weight: 700;
-      color: white;
-      line-height: 1.15;
-      margin-bottom: 1.5rem;
-      text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-    }
-
-    .home-text h1 span {
-      color: var(--red);
-      position: relative;
-      display: inline-block;
-    }
-
-    .home-text p {
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.9);
-      line-height: 1.7;
-      margin-bottom: 2rem;
-    }
-
-    /* BUTTON GROUP - ORGANIZED */
-    .button-group {
       display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
+      flex-direction: column;
       align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 2rem;
     }
 
-    .btn-primary {
-      background: var(--red);
-      color: white;
-      padding: 0.9rem 2rem;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      display: inline-block;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      box-shadow: 0 4px 12px rgba(196, 30, 58, 0.3);
+    .brand-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      color: var(--white);
+      text-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+      margin-bottom: 0.5rem;
+      animation: fadeInUp 1s ease-out;
     }
 
-    .btn-primary:hover {
-      background: var(--red-dark);
-      transform: translateY(-3px);
-      box-shadow: 0 6px 18px rgba(196, 30, 58, 0.4);
-    }
-
-    .btn-secondary {
-      background: transparent;
-      border: 2px solid white;
-      color: white;
-      padding: 0.9rem 2rem;
-      text-decoration: none;
-      border-radius: 50px;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      display: inline-block;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-
-    .btn-secondary:hover {
-      background: white;
+    .brand-title span {
       color: var(--red);
-      transform: translateY(-3px);
+      text-shadow: 0 2px 20px rgba(196, 30, 58, 0.4);
     }
 
-    .btn-outline {
-      background: transparent;
-      border: 2px solid var(--red);
-      color: var(--red);
-      padding: 0.8rem 1.8rem;
-      border-radius: 50px;
-      font-weight: 700;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      font-size: 0.95rem;
+    .brand-subtitle {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+      font-weight: 400;
+      letter-spacing: 0.3em;
+      color: rgba(255, 255, 255, 0.85);
+      text-transform: uppercase;
+      margin-top: 0.5rem;
+      animation: fadeInUp 1s ease-out 0.2s both;
     }
 
-    .btn-outline:hover {
-      background: var(--red);
-      color: white;
-      transform: translateY(-2px);
-    }
-
-    .home-image i {
-      font-size: 9rem;
-      color: rgba(255,255,255,0.85);
-      filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     /* MENU SLIDER */
@@ -411,7 +374,7 @@
       font-family: inherit;
     }
 
-    /* ===== PERSISTENT ORDER NOW BUTTON - BOTTOM CENTER ===== */
+    /* PERSISTENT ORDER NOW BUTTON - BOTTOM CENTER */
     .floating-order-btn {
       position: fixed;
       bottom: 25px;
@@ -464,6 +427,7 @@
       .review-card { flex: 0 0 100%; }
       .floating-order-btn { padding: 12px 24px; font-size: 0.9rem; bottom: 20px; }
       .floating-order-btn i { font-size: 1rem; }
+      .brand-subtitle { letter-spacing: 0.2em; }
     }
   </style>
 </head>
@@ -483,19 +447,17 @@
 </nav>
 
 <main>
+  <!-- HOME SECTION WITH VIDEO BACKGROUND AND CENTERED YESKI PIZZA TEXT -->
   <section id="home" class="home-section">
-    <div class="main-container">
-      <div class="home-content">
-        <div class="home-text">
-          <h1>Yeski <span>Pizza</span><br>Artisan Pizza Craft</h1>
-          <p>Discover Our Signature, Bold & Unforgettable Flavors, crafted to redefine everyday meals. Hand-stretched dough, premium ingredients, and the finest pizza craft in Obuasi.</p>
-          <div class="button-group">
-            <a href="#menu-section" class="btn-primary">Explore Menu</a>
-            <button id="orderHeroBtn" class="btn-secondary">Order Now</button>
-          </div>
-        </div>
-        <div class="home-image"><i class="fas fa-pizza-slice"></i></div>
-      </div>
+    <!-- Video Background - Replace the src with your own 5-second video file -->
+    <video class="hero-video" autoplay loop muted playsinline>
+      <source src="https://placehold.co/1920x1080/2a2a2a/c41e3a?text=Your+5s+Video+Here" type="video/mp4">
+      Your browser does not support the video tag. Please upload a video file.
+    </video>
+    <!-- Centered Branding with cool font style - NO EMOJIS -->
+    <div class="hero-branding">
+      <h1 class="brand-title">YESKI <span>PIZZA</span></h1>
+      <div class="brand-subtitle">Artisan Pizza Craft</div>
     </div>
   </section>
 
@@ -508,7 +470,7 @@
           <div class="pizza-name" id="pizzaName">The Dukeman</div>
           <div class="pizza-tagline" id="pizzaTagline">Beef, Sausage, Bacon, Onions</div>
           <p class="pizza-desc" id="pizzaDesc">Rich, meaty, and impossibly satisfying. Piled high with premium beef, smoky sausage, crispy bacon, and caramelized onions over a robust tomato base.</p>
-          <button id="orderFromMenuBtn" class="btn-primary" style="margin-bottom:1rem;">ORDER NOW →</button>
+          <button id="orderFromMenuBtn" class="btn-primary" style="margin-bottom:1rem; background:var(--red); color:white; border:none; padding:0.9rem 2rem; border-radius:50px; font-weight:700; cursor:pointer;">ORDER NOW →</button>
           <div class="dots-row" id="dotsRow"></div>
         </div>
       </div>
@@ -516,14 +478,14 @@
   </section>
 
   <section id="map" class="map-section">
-    <div class="main-container"><h2>Find <span>Us</span></h2><p class="subtitle">📍 Replace this map with your own Google Maps embed</p>
+    <div class="main-container"><h2>Find <span>Us</span></h2><p class="subtitle">Replace this map with your own Google Maps embed</p>
       <div class="map-container"><div class="map-placeholder"><i class="fas fa-map-marked-alt"></i><h3>Map Placeholder</h3><p>Paste your Google Maps iframe code inside .map-container</p><code style="background:#ddd;padding:4px;display:inline-block;margin-top:8px;">&lt;iframe src="YOUR_MAP_URL"&gt;&lt;/iframe&gt;</code></div></div>
       <div class="address-info"><div class="address-card"><i class="fas fa-map-marker-alt"></i><span>Plot 75, Adumurah Bossman Street, Obuasi, Ghana</span></div><div class="address-card"><i class="fas fa-clock"></i><span>Mon-Sun: 11am - 10pm</span></div></div>
     </div>
   </section>
 
   <section id="reviews" class="reviews-section">
-    <div class="section-title">What our customers have to say.</div>
+    <div class="section-title">What our customers have to say</div>
     <div class="rating-row"><div class="stars">★★★★★</div><span class="rating-score">4.9</span><span class="rating-count">(29K+ reviews)</span></div>
     <div class="slider-wrapper"><button class="review-nav-btn" id="reviewPrev">‹</button><div class="slider-viewport"><div class="slider-track" id="reviewTrack"></div></div><button class="review-nav-btn" id="reviewNext">›</button></div>
     <div class="review-dots" id="reviewDots"></div>
@@ -532,7 +494,7 @@
   <div id="orderModal" class="order-modal">
     <div class="modal-content">
       <span class="close-modal" id="closeModalBtn">&times;</span>
-      <h2 style="color:var(--red); margin-bottom:1rem;">Your Order 🍕</h2>
+      <h2 style="color:var(--red); margin-bottom:1rem;">Your Order</h2>
       <div id="cartItemsList"></div>
       <div style="text-align:right; font-weight:800; margin:1rem 0; font-size:1.2rem;" id="cartTotal">Total: GHS 0</div>
       <hr style="margin:1rem 0;">
@@ -541,7 +503,7 @@
         <input type="text" id="customerName" placeholder="Full Name" required>
         <input type="text" id="customerLocation" placeholder="Delivery Address / Location (Obuasi)" required>
         <textarea id="specialInstructions" rows="2" placeholder="Additional notes (allergies, gate code, etc.)"></textarea>
-        <button type="submit" id="submitOrderBtn" class="btn-primary" style="width:100%; margin-top:0.5rem;">Send Order via WhatsApp</button>
+        <button type="submit" id="submitOrderBtn" class="btn-primary" style="width:100%; margin-top:0.5rem; background:var(--red); color:white; border:none; padding:0.9rem; border-radius:50px; font-weight:700; cursor:pointer;">Send Order via WhatsApp</button>
       </form>
     </div>
   </div>
@@ -638,12 +600,12 @@
     const special = document.getElementById('specialInstructions')?.value.trim();
     if(!name || !location) { alert("Please enter your name and delivery address."); return false; }
     if(cart.length === 0) { alert("Your order is empty. Please add items using ORDER NOW."); return false; }
-    let orderDetails = "🍕 *YESKI PIZZA NEW ORDER* 🍕\n\n";
-    orderDetails += `👤 *Name:* ${name}\n📍 *Location:* ${location}\n📝 *Notes:* ${special || "None"}\n\n`;
-    orderDetails += "*YOUR ITEMS:*\n";
+    let orderDetails = "YESKI PIZZA NEW ORDER\n\n";
+    orderDetails += `Name: ${name}\nLocation: ${location}\nNotes: ${special || "None"}\n\n`;
+    orderDetails += "YOUR ITEMS:\n";
     let total = 0;
-    cart.forEach(item => { orderDetails += `▸ ${item.name} (x${item.quantity}) = GHS ${item.price * item.quantity}\n`; total += item.price * item.quantity; });
-    orderDetails += `\n💰 *TOTAL: GHS ${total}*\n\nThank you for choosing Yeski Pizza! 🔥`;
+    cart.forEach(item => { orderDetails += `- ${item.name} (x${item.quantity}) = GHS ${item.price * item.quantity}\n`; total += item.price * item.quantity; });
+    orderDetails += `\nTOTAL: GHS ${total}\n\nThank you for choosing Yeski Pizza.`;
     const phone = "233595590891";
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(orderDetails)}`, '_blank');
     return true;
@@ -651,25 +613,25 @@
   
   // Modal controls
   const modal = document.getElementById('orderModal');
-  const openModalButtons = [document.getElementById('orderNavBtn'), document.getElementById('orderHeroBtn'), document.getElementById('orderFromMenuBtn'), document.getElementById('floatingCartBtn')];
+  const openModalButtons = [document.getElementById('orderNavBtn'), document.getElementById('orderFromMenuBtn'), document.getElementById('floatingCartBtn')];
   openModalButtons.forEach(btn => { if(btn) btn.addEventListener('click', (e) => { e.preventDefault(); renderCart(); modal.style.display = 'flex'; }); });
   document.getElementById('closeModalBtn')?.addEventListener('click', () => modal.style.display = 'none');
   window.onclick = (e) => { if(e.target === modal) modal.style.display = 'none'; };
   document.getElementById('submitOrderBtn')?.addEventListener('click', (e) => { e.preventDefault(); if(sendOrderToWhatsApp()) { modal.style.display = 'none'; cart = []; renderCart(); } });
-  document.getElementById('orderFromMenuBtn')?.addEventListener('click', (e) => { addToCart(menuItems[currentSlideIndex].id); alert(`✓ ${menuItems[currentSlideIndex].name} added to your order!`); });
+  document.getElementById('orderFromMenuBtn')?.addEventListener('click', (e) => { addToCart(menuItems[currentSlideIndex].id); alert(`${menuItems[currentSlideIndex].name} added to your order.`); });
   
   window.addToCart = addToCart; window.removeItem = removeItem; window.updateQty = updateQty;
   
   // Reviews with man silhouette
   const reviewData = [
-    { quote: "The pizza sold at Yeski Pizza was served at the last supper. Pepperoni Beef one oo!", handle: "@erickambozie", platform: "Via X", color: "#c41e3a" },
-    { quote: "The meatza be loaded waa, Yeski Pizza really no dey play with toppings!", handle: "@Nana Poku", platform: "Via TikTok", color: "#3a9e4a" },
-    { quote: "The meatza pizza anumde foc! Yeski Pizza on top!", handle: "@princethug89", platform: "Via TikTok", color: "#c9a800" },
-    { quote: "Still enjoying my Double Chicken Barbecue pizza, tastes soo good!", handle: "@rajways99", platform: "Via TikTok", color: "#5a5a5a" },
-    { quote: "Yeski Pizza chicken pizza is absolutely fire! Best in town!", handle: "@Ahmed Mustapha", platform: "Via Instagram", color: "#f07c00" },
-    { quote: "Visited Yeski Pizza last weekend. Pepperoni had me going back!", handle: "@Rashid Yemo", platform: "Via X", color: "#1a8c8c" },
-    { quote: "Yeski Pizza never disappoints. Whole family loved it!", handle: "@blueway73", platform: "Via Facebook", color: "#1e3a6e" },
-    { quote: "BBQ chicken pizza from Yeski is everything! 10/10!", handle: "@altims88", platform: "Via TikTok", color: "#6e3a8c" }
+    { quote: "The pizza sold at Yeski Pizza was served at the last supper. Pepperoni Beef one oo.", handle: "@erickambozie", platform: "Via X", color: "#c41e3a" },
+    { quote: "The meatza be loaded waa, Yeski Pizza really no dey play with toppings.", handle: "@Nana Poku", platform: "Via TikTok", color: "#3a9e4a" },
+    { quote: "The meatza pizza anumde foc. Yeski Pizza on top.", handle: "@princethug89", platform: "Via TikTok", color: "#c9a800" },
+    { quote: "Still enjoying my Double Chicken Barbecue pizza, tastes soo good.", handle: "@rajways99", platform: "Via TikTok", color: "#5a5a5a" },
+    { quote: "Yeski Pizza chicken pizza is absolutely fire. Best in town.", handle: "@Ahmed Mustapha", platform: "Via Instagram", color: "#f07c00" },
+    { quote: "Visited Yeski Pizza last weekend. Pepperoni had me going back.", handle: "@Rashid Yemo", platform: "Via X", color: "#1a8c8c" },
+    { quote: "Yeski Pizza never disappoints. Whole family loved it.", handle: "@blueway73", platform: "Via Facebook", color: "#1e3a6e" },
+    { quote: "BBQ chicken pizza from Yeski is everything. 10 out of 10.", handle: "@altims88", platform: "Via TikTok", color: "#6e3a8c" }
   ];
   const trackDiv = document.getElementById('reviewTrack');
   function buildReviews() { 
